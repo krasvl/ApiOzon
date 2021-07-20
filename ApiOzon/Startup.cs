@@ -1,5 +1,6 @@
 using ApiOzon.Data;
 using ApiOzon.Data.AppContext;
+using ApiOzon.Data.LogLevelRepository;
 using ApiOzon.Data.LogRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +36,7 @@ namespace ApiOzon
                 options.UseSqlServer(connection));
 
             services.AddTransient<ILogRepository, LogRepository>();
-
+            services.AddTransient<ILogLevelRepository, LogLevelRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

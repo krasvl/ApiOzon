@@ -23,13 +23,11 @@ namespace ApiOzon.Data.LogRepository
             await _context.SaveChangesAsync();
         }
 
-
         public async void RemoveLogAsync(int id)
         {
             _context.Logs.Remove(await _context.Logs.FirstOrDefaultAsync(l => l.Id == id));
             await _context.SaveChangesAsync();
         }
-
 
         public async Task<List<Log>> GetLogsAsync(Func<Log, bool> filter) =>
             await Task.FromResult(_context.Logs.Where(filter).ToList());
