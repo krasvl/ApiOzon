@@ -1,4 +1,5 @@
 ﻿using ApiOzon.Data.AppContext;
+using ApiOzon.Models.Logs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace ApiOzon.Data.LogLevelRepository
             _context = context;
         }
 
-        public async void GetLevelAsync(string levelName) =>
+        public async Task<LogLevel> GetLevelAsync(string levelName) =>
             await _context.LogLevels.FirstOrDefaultAsync(l => l.Name == levelName);
 
     }

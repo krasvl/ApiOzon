@@ -1,7 +1,10 @@
-﻿namespace ApiOzon.Data.LogLevelRepository
+﻿using ApiOzon.Models.Logs;
+using System.Threading.Tasks;
+
+namespace ApiOzon.Data.LogLevelRepository
 {
     public interface ILogLevelRepository
     {
-        void GetLevelAsync(string levelName);
+        Task<LogLevel> GetLevelAsync(string levelName);
     }
 }
