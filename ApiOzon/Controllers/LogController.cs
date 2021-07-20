@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiOzon.Data.AppContext;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,8 @@ namespace ApiOzon.Controllers
     public class LogController : ControllerBase
     {
 
-        public LogController()
+        public LogController(ApplicationContext context)
         {
-
         }
 
         [HttpGet]
