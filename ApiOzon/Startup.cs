@@ -1,4 +1,6 @@
+using ApiOzon.Data;
 using ApiOzon.Data.AppContext;
+using ApiOzon.Data.LogRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +33,8 @@ namespace ApiOzon
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connection));
+
+            services.AddTransient<ILogRepository, LogRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
