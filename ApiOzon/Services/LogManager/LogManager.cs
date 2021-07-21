@@ -30,17 +30,17 @@ namespace ApiOzon.Services.LogManager
             }
             else
             {
-                //try
-                //{
+                try
+                {
                     var id = await _logRepository.AddLogAsync(new Log { Text = model.Text, LogLevel = logLevel, Source = model.Source, DateTime = DateTime.Now });
                     result.Successed = true;
                     result.LogId = id;
-                //}
-                //catch (Exception)
-                //{
-                //    result.Errors.Add("AnErrorOccuredWhenAddingTheLog");
-                //}
-            }
+                }
+                catch (Exception)
+                {
+                    result.Errors.Add("AnErrorOccuredWhenAddingTheLog");
+                }
+        }
             return result;
         }
 
@@ -50,8 +50,11 @@ namespace ApiOzon.Services.LogManager
             try
             {
                 var count = await _logRepository.RemoveLogAsync(id);
-                result.Successed = true;
                 result.RemovedLogsCount = count;
+                if (count == 1)
+                    result.Successed = true;
+                else
+                    result.Errors.Add("WhereIsNoLogsWithThisId");
             }
             catch (Exception)
             {
@@ -72,10 +75,10 @@ namespace ApiOzon.Services.LogManager
             {
                 try
                 {
-                    var logs = await _logRepository.GetLogsAsync(l => 
-                    (l.Text.Contains(searchString, StringComparison.CurrentCultureIgnoreCase) || 
+                    var logs = await _logRepository.GetLogsAsync(l =>
+                    (l.Text.Contains(searchString, StringComparison.CurrentCultureIgnoreCase) ||
                     l.Source.Contains(searchString, StringComparison.CurrentCultureIgnoreCase)) &&
-                    l.DateTime > startDate && l.DateTime < endDate && l.LogLevel == logLevel);
+                    l.DateTime >= startDate && l.DateTime <= endDate && l.LogLevel.Name == logLevel.Name);
                     result.Successed = true;
                     result.Logs = logs;
                 }
@@ -90,17 +93,17 @@ namespace ApiOzon.Services.LogManager
         public async Task<LogsStatistics> GetLogsStatisticsAsync()
         {
             var result = new LogsStatistics();
-            //try
-            //{
+            try
+            {
                 result.CountSavedLogs = await _logRepository.GetCountLogsAsync();
                 result.GetLogLevelStatistics = await _logRepository.GetLogLevelStatistics();
                 result.GetLogSourceStatistics = await _logRepository.GetSourceStatistics();
                 result.Successed = true;
-            //}
-            //catch (Exception)
-            //{
-            //    result.Errors.Add("AnErrorOccuredWhenGettingTheStatistics");
-            //}
+        }
+            catch (Exception)
+            {
+                result.Errors.Add("AnErrorOccuredWhenGettingTheStatistics");
+            }
             return result;
         }
     }

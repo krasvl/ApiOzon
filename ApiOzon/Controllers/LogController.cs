@@ -57,7 +57,7 @@ namespace ApiOzon.Controllers
             if (result.Successed)
                 return Ok(result.RemovedLogsCount);
             else
-                return BadRequest(result.Errors);
+                return BadRequest(new { result.RemovedLogsCount, result.Errors });
         }
     }
 }

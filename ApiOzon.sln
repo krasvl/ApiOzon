@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOzon", "ApiOzon\ApiOzon.csproj", "{EE20BD28-D072-4FC0-8BE7-F81FBABBB103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiOzon", "ApiOzon\ApiOzon.csproj", "{EE20BD28-D072-4FC0-8BE7-F81FBABBB103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOzon.Tests", "ApiOzon.Tests\ApiOzon.Tests.csproj", "{A2E3261C-7C4E-4CE7-AD78-B6C96487A314}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EE20BD28-D072-4FC0-8BE7-F81FBABBB103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE20BD28-D072-4FC0-8BE7-F81FBABBB103}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE20BD28-D072-4FC0-8BE7-F81FBABBB103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E3261C-7C4E-4CE7-AD78-B6C96487A314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E3261C-7C4E-4CE7-AD78-B6C96487A314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E3261C-7C4E-4CE7-AD78-B6C96487A314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E3261C-7C4E-4CE7-AD78-B6C96487A314}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
