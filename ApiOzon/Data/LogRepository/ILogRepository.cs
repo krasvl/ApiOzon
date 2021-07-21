@@ -7,8 +7,11 @@ namespace ApiOzon.Data.LogRepository
 {
     public interface ILogRepository
     {
-        void AddLogAsync(Log log);
+        Task<int> AddLogAsync(Log log);
+        Task<int> GetCountLogsAsync();
+        Task<Dictionary<string, int>> GetLogLevelStatistics();
         Task<List<Log>> GetLogsAsync(Func<Log, bool> filter);
-        void RemoveLogAsync(int id);
+        Task<Dictionary<string, int>> GetSourceStatistics();
+        Task<int> RemoveLogAsync(int id);
     }
 }

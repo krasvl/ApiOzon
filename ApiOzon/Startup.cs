@@ -2,6 +2,7 @@ using ApiOzon.Data;
 using ApiOzon.Data.AppContext;
 using ApiOzon.Data.LogLevelRepository;
 using ApiOzon.Data.LogRepository;
+using ApiOzon.Services.LogManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,6 @@ namespace ApiOzon
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
@@ -37,6 +37,8 @@ namespace ApiOzon
 
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<ILogLevelRepository, LogLevelRepository>();
+            services.AddTransient<ILogManager, LogManager>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -44,7 +46,6 @@ namespace ApiOzon
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

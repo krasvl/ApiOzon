@@ -7,7 +7,7 @@ namespace ApiOzon.Services.LogManager
 {
     public class LogResult
     {
-        public bool Successed { get; set; }
-        public List<string> Errors = new List<string>();
+        public bool Successed { get; set; } = false;
+        public List<string> Errors { get; set; } = new List<string>();
     }
 }

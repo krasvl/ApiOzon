@@ -13,12 +13,12 @@ namespace ApiOzon.Data
         {
             if(!context.Logs.Any() && !context.LogLevels.Any())
             {
-                var trace = new LogLevel { Name = "Trace " };
-                var debug = new LogLevel { Name = "Debug  " };
-                var info = new LogLevel { Name = "Info  " };
-                var warning = new LogLevel { Name = "Warning  " };
-                var error = new LogLevel { Name = "Error  " };
-                var fatal = new LogLevel { Name = "Fatal   " };
+                var trace = new LogLevel { Name = "Trace" };
+                var debug = new LogLevel { Name = "Debug" };
+                var info = new LogLevel { Name = "Info" };
+                var warning = new LogLevel { Name = "Warning" };
+                var error = new LogLevel { Name = "Error" };
+                var fatal = new LogLevel { Name = "Fatal" };
 
                 var logLevels = new List<LogLevel> { trace, debug, info, warning, error, fatal };
 
